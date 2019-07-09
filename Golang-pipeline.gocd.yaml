@@ -28,3 +28,13 @@ pipelines:
                 - build.sh
                 command: bash
                 run_if: passed
+            - exec:
+                arguments:
+                  - tag.sh
+                command: bash
+                run_if: passed
+            - exec:
+                arguments:
+                  - test.sh
+                command: bash
+                run_if: passed
