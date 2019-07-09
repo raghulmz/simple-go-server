@@ -1,0 +1,30 @@
+format_version: 3
+pipelines:
+  Golang-pipeline:
+    group: test-pipelines
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git:
+        git: https://github.com/raghulmz/simple-go-server.git
+        shallow_clone: false
+        auto_update: true
+        branch: master
+    stages:
+    - Build:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+        jobs:
+          buildJob:
+            timeout: 0
+            elastic_profile_id: profile_dind_agents
+            tasks:
+            - exec:
+                arguments:
+                - build.sh
+                command: bash
+                run_if: passed
