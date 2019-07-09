@@ -1,6 +1,6 @@
 format_version: 3
 pipelines:
-  Golang-pipeline:
+  Golang-pipeline-yaml:
     group: test-pipelines
     label_template: ${COUNT}
     lock_behavior: none
